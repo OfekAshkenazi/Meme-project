@@ -10,24 +10,15 @@
 </head>
 
 <body onload="onInit()">
-    <section class="main-section" style="display: block;">
-        <header class="grid">
+    <section class="main-section">
+        <header class="flex">
             <div class="logo">logo</div>
             <a class="gallery a-clean" href="#">gallery</a>
             <a class="about a-clean" href="#">about</a>
         </header>
-        <section class="form-area">
-            <input type="text">
-            <input type="text">
-            <input type="text">
-            <div class="file-area">
-                <a href="#" class="btn" onclick="downloadImg(this)" download="my-img.jpg">Download</a>
-                <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" />
-            </div>
-        </section>
 
         <section class="meme-image-area">
-
+            
 
 
 
@@ -38,17 +29,42 @@
     </section>
 
     <section class="meme-area" style="display: none;">
+        <header class="flex">
+            <div class="logo">logo</div>
+            <a class="gallery a-clean" href="#">gallery</a>
+            <a class="about a-clean" href="#">about</a>
+        </header>
 
-        <div class="canvas-container">
-            <canvas class="canvas" width="400" height="600"
-                style="outline: 1px solid rgb(13, 13, 13); background-color: white;"></canvas>
+
+        <div class="editor-container flex">
+            <div class="canvas-container">
+                <canvas class="canvas" width="450" height="500" style="border-radius: 25px;"
+                    style="outline: 1px solid rgb(13, 13, 13); background-color: white;"></canvas>
+            </div>
+            <div class="editor grid">
+                <input type="text" id="meme-text" placeholder="Enter Text Here" value="" onkeyup="onSetLineTxt()">
+                <input type="color" title="font-color" id="font-color" value="#dc143c" onchange="onColorSet()">
+                <button class="btn-font font-up pointer" onclick="onChangeFont(this)">A+</button>
+                <button class="btn-font font-down pointer" onclick="onChangeFont(this)">A-</button>
+                <button class="switch-line pointer" onclick="onSwitchLine()"> &#8593 &#8595</button>
+                <button class="switch-align left pointer" onclick="onAlignItems()"><img
+                        src="images/Rectangle_4_copie_3.png"></button>
+                <button class="switch-align center pointer" onclick="onAlignItems(this)"><img
+                        src="images/Rectangle_4_copie_4.png"></button>
+                <button class="switch-align right pointer" onclick="onAlignItems(this)"><img
+                        src="images/Rectangle_4_copie_5.png"></button>
+                <a href="#" class="download flex" onclick="downloadImg(this)" download="my-img.jpg"><img
+                        src="images/Forme_8.png"> Download</a>
+                <a href="#" class="Share a-clean flex"><img src="images/Forme_7.png"> Share</a>
+            </div>
+
         </div>
-
     </section>
 
-    <script src="js/meme-controler.js"></script>
+    <script src="js/meme.services.js"></script>
     <script src="js/gallery.services.js"></script>
     <script src="js/upload-and-download.services.js"></script>
+    <script src="js/meme-controler.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/main.js"></script>
 </body>
