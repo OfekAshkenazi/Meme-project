@@ -38,7 +38,11 @@ function addTouchListeners() {
 }
 
 
-
+function onMoveToGallery() {
+    console.log('hi')
+    document.querySelector('.main-section').style.display = "block"
+    document.querySelector('.meme-area').style.display = "none"
+}
 
 
 function onDown(ev) {

@@ -13,25 +13,41 @@
     <section class="main-section">
         <header class="flex">
             <div class="logo">logo</div>
-            <a class="gallery a-clean" href="#">gallery</a>
+            <a class="gallery a-clean" href="#" onclick="onMoveToGallery()">gallery</a>
             <a class="about a-clean" href="#">about</a>
         </header>
 
-        <section class="meme-image-area">
-            
+        <section>
+            <!-- <input class="search-bar" type="text" placeHolder="Search"> -->
+            <input class="search-bar bar2" type="text" placeHolder="Search">
+            <div class="meme-image-area">
+
+
+
+            </div>
+
 
 
 
         </section>
 
 
-
+        <footer class="main-footer text-center flexC">
+            <div class="logo-footer">logo</div>
+            <small class="s-text">© 2022 meme.com - All Rights Reserved - Find more App At My Git Hub</small>
+            <ul class="icon-box flex a-clean">
+                <li><a class="fc" href="https://www.facebook.com/profile.php?id=1686697002"><img src="images/facebook.png"></a></li>
+                <li><a class="tw" href="https://twitter.com/"><img src="images/twiit.png" alt=""></a></li>
+                <li><a class="git" href="https://github.com/OfekAshkenazi"><img src="images/github-logo.png"></a></li>
+                <li><a class="linkDin" href="https://www.linkedin.com/in/ofek-ashkenazi-514830259/"><img src="images/linkedin-logo.png"></a></li>
+            </ul>
+        </footer>
     </section>
 
     <section class="meme-area" style="display: none;">
         <header class="flex">
             <div class="logo">logo</div>
-            <a class="gallery a-clean" href="#">gallery</a>
+            <a class="gallery a-clean" href="#" onclick="onMoveToGallery()">gallery</a>
             <a class="about a-clean" href="#">about</a>
         </header>
 
@@ -43,16 +59,19 @@
             </div>
             <div class="editor grid">
                 <input type="text" id="meme-text" placeholder="Enter Text Here" value="" onkeyup="onSetLineTxt()">
-                <input type="color" title="font-color" id="font-color" value="#dc143c" onchange="onColorSet()">
-                <button class="btn-font font-up pointer" onclick="onChangeFont(this)">A+</button>
-                <button class="btn-font font-down pointer" onclick="onChangeFont(this)">A-</button>
+                <input type="color" title="font-color" class="style-edit-btn icon-border-out" id="font-color"
+                    value="#dc143c" onchange="onColorSet()">
+                <button class="btn-font font-up pointer style-edit-btn icon-border-out"
+                    onclick="onChangeFont(this)">A+</button>
+                <button class="btn-font font-down pointer style-edit-btn icon-border-out"
+                    onclick="onChangeFont(this)">A-</button>
                 <button class="switch-line pointer" onclick="onSwitchLine()"> &#8593 &#8595</button>
-                <button class="switch-align left pointer" onclick="onAlignItems()"><img
+                <button class="switch-align left pointer icon-border-out style-edit-btn" onclick="onAlignItems()"><img
                         src="images/Rectangle_4_copie_3.png"></button>
-                <button class="switch-align center pointer" onclick="onAlignItems(this)"><img
-                        src="images/Rectangle_4_copie_4.png"></button>
-                <button class="switch-align right pointer" onclick="onAlignItems(this)"><img
-                        src="images/Rectangle_4_copie_5.png"></button>
+                <button class="switch-align center pointer icon-border-out style-edit-btn"
+                    onclick="onAlignItems(this)"><img src="images/Rectangle_4_copie_4.png"></button>
+                <button class="switch-align right pointer icon-border-out style-edit-btn"
+                    onclick="onAlignItems(this)"><img src="images/Rectangle_4_copie_5.png"></button>
                 <a href="#" class="download flex" onclick="downloadImg(this)" download="my-img.jpg"><img
                         src="images/Forme_8.png"> Download</a>
                 <a href="#" class="Share a-clean flex"><img src="images/Forme_7.png"> Share</a>

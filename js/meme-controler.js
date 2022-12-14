@@ -3,14 +3,11 @@ let gLine = 0
 function onImageClicked(imageId) {
     const theImage = gImgs.find(image => image.id === imageId)
     gMeme.image = theImage
-    // console.log(gMeme)
-    document.body.style.cursor = 'progress'
-    setTimeout(() => {
+    // setTimeout(() => {
         document.querySelector('.main-section').style.display = "none"
         document.querySelector('.meme-area').style.display = "block"
         renderMeme(gMeme.image.url)
-        document.body.style.cursor = 'default'
-    }, 700)
+    // }, 700)
 
 
 }
