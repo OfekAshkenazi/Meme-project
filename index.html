@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>meme project</title>
+</head>
+
+<body onload="onInit()">
+    <section class="main-section" style="display: block;">
+        <header class="grid">
+            <div class="logo">logo</div>
+            <a class="gallery a-clean" href="#">gallery</a>
+            <a class="about a-clean" href="#">about</a>
+        </header>
+        <section class="form-area">
+            <input type="text">
+            <input type="text">
+            <input type="text">
+            <div class="file-area">
+                <a href="#" class="btn" onclick="downloadImg(this)" download="my-img.jpg">Download</a>
+                <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" />
+            </div>
+        </section>
+
+        <section class="meme-image-area">
+
+
+
+
+        </section>
+
+
+
+    </section>
+
+    <section class="meme-area" style="display: none;">
+
+        <div class="canvas-container">
+            <canvas class="canvas" width="400" height="600"
+                style="outline: 1px solid rgb(13, 13, 13); background-color: white;"></canvas>
+        </div>
+
+    </section>
+
+    <script src="js/meme-controler.js"></script>
+    <script src="js/gallery.services.js"></script>
+    <script src="js/upload-and-download.services.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
