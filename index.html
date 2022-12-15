@@ -63,7 +63,9 @@
 
             <div class="editor grid">
                 <input type="text" id="meme-text" placeholder="Enter Text Here" value="" onkeyup="onSetLineTxt()">
-                <input type="color" title="font-color" class="style-edit-btn icon-border-out" id="font-color"
+
+                <label class="style-edit-btn font-color" for="font-color"><img src="images/paint-board-and-brush.png"></label>
+                <input type="color"  hidden="true"  title="font-color" class="style-edit-btn icon-border-out" id="font-color"
                     value="#dc143c" onchange="onColorSet()">
 
                 <button class="btn-font font-up pointer style-edit-btn icon-border-out"
@@ -73,6 +75,9 @@
                     onclick="onChangeFont(this)">A-</button>
 
                 <button class="switch-line pointer" onclick="onSwitchLine()"> &#8593 &#8595</button>
+                <button class="add-line pointer" onclick="onAddLine()">+</button>
+                <!-- <button class="remove-line pointer" onclick="onRemoveLine()"><img src="images/Forme_4.png"></button> -->
+
                 <button class="switch-align left pointer icon-border-out style-edit-btn" onclick="onAlignItems()"><img
                         src="images/Rectangle_4_copie_3.png"></button>
 
@@ -90,7 +95,7 @@
 
         </div>
     </section>
-
+    
     <script src="js/meme.services.js"></script>
     <script src="js/gallery.services.js"></script>
     <script src="js/upload-and-download.services.js"></script>
