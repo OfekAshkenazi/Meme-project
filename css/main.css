@@ -144,6 +144,7 @@ header a:hover {
     grid-template-columns: repeat(3, minmax(90px, 1fr));
     grid-template-rows: repeat(6, 40px);
     align-items: center;
+    justify-items: center;
     gap: 1.2em;
     padding: 0.9em;
     /* min-width: 475px; */
@@ -203,16 +204,28 @@ header a:hover {
     color: #ffffff;
     justify-content: space-evenly;
     grid-area: 6 / 1 / 6 / 2;
+    width: 100%;
+
 }
 
 .font-up {
     grid-area: 3 / 1;
+    font-weight: bold;
+    font-size: 20px;
 }
 
 .font-down {
     grid-area: 3 / 2;
+    font-weight: bold;
+    font-size: 20px;
+
 }
 
+
+#font-color {
+    grid-area: 3 / 3;
+
+}
 
 .font-color {
     grid-area: 3 / 3;
@@ -224,13 +237,22 @@ header a:hover {
     background-color: white;
 }
 
+.remove-line {
+    box-shadow: 1px 5px 0 #8c0606, inset 0 5px 0 rgba(255, 255, 255, 0.58);
+    border-radius: 10px;
+    color: #ebeef3;
+    border: none;
+    background-image: linear-gradient(-38deg, #cf1d37 0%, #cf1d37 1%, #f05036 100%);
+}
+
 .download {
     text-decoration: none;
     color: #ffffff;
     background-color: #8f44bb;
     border-radius: 15px;
-    grid-area: 6 / 2 / 6 / 4;
-    justify-content: space-evenly;
+    grid-area: 6 / 3 / 6 / 3;
+    width: 100%;
+    justify-content: space-around;
     padding: 0.5em;
 }
 
@@ -256,7 +278,7 @@ header a:hover {
     }
 
     #meme-text {
-        grid-area: 1 / 2 / 1 / 5;
+        grid-area: 1 / 1 / 1 / 6;
     }
 
     .switch-line {
@@ -300,7 +322,6 @@ header a:hover {
         background-color: #8f44bb;
         border-radius: 15px;
         grid-area: 6 / 4 / 6 / 6;
-        justify-content: space-evenly;
         padding: 0.5em;
     }
 
@@ -311,6 +332,18 @@ header a:hover {
     canvas {
         width: 450px;
         height: 500px;
+    }
+
+    .add-line {
+        grid-area: 2 / 3;
+    }
+
+    .remove-line {
+        grid-area: 2 / 4;
+    }
+
+    .font-color {
+        grid-area: 4 / 5;
     }
 
 }

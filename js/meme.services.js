@@ -4,29 +4,15 @@ var gMeme = {
 
     lines: [
         {
+            isDrag: false,
             txt: '',
             size: 40,
-            align: 'center',
+            align: 'left',
             color: 'red',
-            x: 200,
+            x: 20,
             y: 35
         },
-        {
-            txt: '',
-            size: 40,
-            align: 'center',
-            color: 'red',
-            x: 200,
-            y: 230
-        },
-        {
-            txt: '',
-            size: 40,
-            align: 'center',
-            color: 'red',
-            x: 200,
-            y: 480
-        },
+
     ]
 }
 
@@ -53,17 +39,15 @@ var gImgs = [
 ]
 
 
-function renderMeme(imgUrl) {
+function renderMeme() {
     let img = new Image()
-    img.src = imgUrl
+    const meme = getMeme()
+    img.src = meme.image.url
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-    var { txt, color, size, align, x, y } = gMeme.lines[0]
-    drawText(txt, x, y, color, size, align)
-    var { txt, color, size, align, x, y } = gMeme.lines[1]
-    drawText(txt, x, y, color, size, align)
-    var { txt, color, size, align, x, y } = gMeme.lines[2]
-    drawText(txt, x, y, color, size, align)
-    
+    meme.lines.map(line => {
+        var { txt, color, size, align, x, y } = line
+        drawText(txt, x, y, color, size, align)
+    })
 }
 
 function getMeme() {

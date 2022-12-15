@@ -2,6 +2,8 @@
 
 let gCtx
 let gElCanvas
+let gStartPos
+
 const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 
 
@@ -18,7 +20,7 @@ function onInit() {
 
 function addListeners() {
     addMouseListeners()
-    // addTouchListeners()
+    addTouchListeners()
     // window.addEventListener('resize', () => {
     //     resizeCanvas()
     //     renderMeme(gMeme.image.url)
@@ -28,7 +30,7 @@ function addListeners() {
 
 
 function addMouseListeners() {
-    // gElCanvas.addEventListener('mousemove', onMove)
+    gElCanvas.addEventListener('mousemove', onMove)
     gElCanvas.addEventListener('mousedown', onDown)
     gElCanvas.addEventListener('mouseup', onUp)
 }
@@ -48,12 +50,42 @@ function onMoveToGallery() {
 
 function onDown(ev) {
     const pos = getEvPos(ev)
-    console.log(pos)
-    document.body.style.cursor = 'crosshair'
+    gStartPos = pos
+    const meme = getMeme()
+    meme.lines[gLine].isDrag = true
+    document.body.style.cursor = 'grabbing'
+}
+
+
+
+function onMove(ev) {
+    const meme = getMeme()
+
+    if (!meme.lines[gLine].isDrag) return
+
+    const pos = getEvPos(ev)
+    // Calc the delta , the diff we moved
+    const dx = pos.x - gStartPos.x
+    const dy = pos.y - gStartPos.y
+    moveText(dx, dy)
+    // Save the last pos , we remember where we`ve been and move accordingly
+    gStartPos = pos
+    // The canvas is render again after every move
+    renderMeme()
+}
+
+function moveText(dx, dy) {
+    const meme = getMeme()
+    meme.lines[gLine].x += dx
+    meme.lines[gLine].y += dy
+
+
 }
 
 function onUp() {
-    document.body.style.cursor = 'crosshair'
+    const meme = getMeme()
+    meme.lines[gLine].isDrag = false
+    document.body.style.cursor = 'default'
 }
 
 function getEvPos(ev) {
@@ -64,7 +96,7 @@ function getEvPos(ev) {
     }
     // Check if its a touch ev
     if (TOUCH_EVS.includes(ev.type)) {
-        console.log('ev:', ev)
+        // console.log('ev:', ev)
         //soo we will not trigger the mouse ev
         ev.preventDefault()
         //Gets the first touch point

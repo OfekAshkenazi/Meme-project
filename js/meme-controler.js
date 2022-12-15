@@ -1,26 +1,68 @@
 'use strict'
 let gLine = 0
-
+let gLineMax = 0
 function onImageClicked(imageId) {
     const theImage = gImgs.find(image => image.id === imageId)
     gMeme.image = theImage
     document.querySelector('.main-section').style.display = "none"
     document.querySelector('.meme-area').style.display = "block"
-    renderMeme(gMeme.image.url)
+    renderMeme()
 
 
+}
+
+
+
+
+function onAlignItems(txt) {
+    const meme = getMeme()
+    switch (txt) {
+        case 'left':
+            meme.lines[gLine].align = 'left'
+            break
+        case 'center':
+            meme.lines[gLine].align = 'center'
+            break
+        case 'right':
+            meme.lines[gLine].align = 'right'
+            break
+    }
+
+    renderMeme()
+}
+
+function onRemoveLine() {
+    const meme = getMeme()
+    meme.lines.splice(gLine, 1)
+    gLineMax--
+    renderMeme()
+
+}
+
+function onAddLine() {
+    const meme = getMeme()
+    meme.lines.push({
+        isDrag: false,
+        txt: '',
+        size: 40,
+        align: 'center',
+        color: 'red',
+        x: 200,
+        y: getRandomInt(20, 300)
+    },)
+    gLineMax++
+    renderMeme()
 }
 
 function onSwitchLine() {
-    gLine === 2 ? gLine = 0 : gLine++
+    gLine === gLineMax ? gLine = 0 : gLine++
 }
-
 
 function onSetLineTxt() {
     const inputValue = document.getElementById('meme-text').value
     const meme = getMeme()
     meme.lines[gLine].txt = inputValue
-    renderMeme(gMeme.image.url)
+    renderMeme()
 }
 
 function onColorSet() {
@@ -29,7 +71,7 @@ function onColorSet() {
     meme.lines.forEach(line => {
         line.color = inputValue
     })
-    renderMeme(gMeme.image.url)
+    renderMeme()
 
 }
 
@@ -46,6 +88,6 @@ function onChangeFont(elBtn) {
         })
     }
 
-    renderMeme(gMeme.image.url)
+    renderMeme()
 }
 
