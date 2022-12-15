@@ -8,7 +8,6 @@
     src: url(/fonts/Poppins/Poppins-ExtraBold.ttf);
 }
 
-
 * {
     box-sizing: border-box;
     font-family: poppins;
@@ -58,6 +57,7 @@
 .space-around {
     justify-content: space-around;
 }
+
 body {
     text-align: center;
     background-color: #22252c;
@@ -92,9 +92,9 @@ header a:hover {
     font-size: 22px;
     padding-left: 1em;
 }
-.main-content {
 
-}
+.main-content {}
+
 .meme-image-area {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 240px));
@@ -109,7 +109,7 @@ header a:hover {
     border-radius: 15px;
     cursor: pointer;
     min-height: 200px;
-    width: 230px;
+    max-width: 230px;
 
 }
 
@@ -122,9 +122,6 @@ header a:hover {
     border: none;
 }
 
-.bar2 {
-    grid-area: 1 / 3 / 1 / 6;
-}
 
 .image {
     width: 100%;
@@ -134,24 +131,22 @@ header a:hover {
 }
 
 .editor-container {
-    width: 70vw;
-    margin: auto;
+    flex-direction: column;
     justify-content: center;
-    gap: 30px;
+    gap: 5px;
     border-radius: 5px;
-    padding: 2em;
+
 }
 
-
 .editor {
-    border-radius: 25px;
+    border-radius: 1.5em;
     background-color: #3f434e;
-    grid-template-columns: repeat(5, minmax(80px, 1fr));
-    grid-template-rows: repeat(6, minmax(20px, 1fr));
+    grid-template-columns: repeat(3, minmax(90px, 1fr));
+    grid-template-rows: repeat(6, 40px);
     align-items: center;
-    justify-content: center;
-    gap: 10px;
+    gap: 1.2em;
     padding: 0.9em;
+    /* min-width: 475px; */
 }
 
 #meme-text {
@@ -162,23 +157,43 @@ header a:hover {
     height: fit-content;
     border: none;
     text-align: center;
-    grid-area: 1 / 2 / 1 / 5;
-
+    grid-area: 1 / 1 / 1 / 4;
 }
 
+
 .switch-line {
-    font-size: 18px;
     padding: 0.8em;
     font-weight: bold;
     background-image: linear-gradient(-38deg, #66c4dc 0%, #40b1ce 50%, #0c98bb 100%);
     border: none;
     color: white;
+    font-size: 16px;
     border-radius: 10px;
-    justify-self: center;
-    grid-area: 2 / 2;
+    grid-area: 2 / 1;
 }
 
 
+
+.left {
+    grid-area: 4 / 1;
+}
+
+.center {
+    grid-area: 4 / 2;
+}
+
+.right {
+    grid-area: 4 / 3;
+}
+
+.Share {
+    background-color: #1e7cd3;
+    border-radius: 15px;
+    padding: 0.5em;
+    color: #ffffff;
+    justify-content: space-evenly;
+    grid-area: 6 / 1 / 6 / 2;
+}
 
 .font-up {
     grid-area: 3 / 1;
@@ -189,42 +204,98 @@ header a:hover {
 }
 
 #font-color {
-    grid-area: 4 / 5;
-}
-
-
-
-
-.left {
     grid-area: 3 / 3;
 }
-
-.center {
-    grid-area: 3 / 4;
-}
-
-.right {
-    grid-area: 3 / 5;
-}
-
-.Share {
-    background-color: #1e7cd3;
-    border-radius: 15px;
-    padding: 0.5em;
-    color: #ffffff;
-    justify-content: space-evenly;
-    grid-area: 6 / 1 / 6 / 3;
-}
-
 
 .download {
     text-decoration: none;
     color: #ffffff;
     background-color: #8f44bb;
     border-radius: 15px;
-    grid-area: 6 / 4 / 6 / 6;
+    grid-area: 6 / 2 / 6 / 4;
     justify-content: space-evenly;
     padding: 0.5em;
+}
+
+.canvas-container {
+    padding-top: 1.3em;
+}
+
+
+@media (min-width: 1100px) {
+
+    .editor-container {
+        flex-direction: row;
+        max-height: 560px;
+        gap: 30px;
+        padding: 2em;
+    }
+
+
+    .editor {
+        grid-template-columns: repeat(5, minmax(80px, 1fr));
+        grid-template-rows: repeat(6, minmax(20px, 1fr));
+        padding: 3em;
+    }
+
+    #meme-text {
+        grid-area: 1 / 2 / 1 / 5;
+    }
+
+    .switch-line {
+        grid-area: 2 / 2;
+    }
+
+
+    .left {
+        grid-area: 3 / 3;
+    }
+
+    .center {
+        grid-area: 3 / 4;
+    }
+
+    .right {
+        grid-area: 3 / 5;
+    }
+
+    .Share {
+        grid-area: 6 / 1 / 6 / 3;
+    }
+
+
+    .font-up {
+        grid-area: 3 / 1;
+    }
+
+    .font-down {
+        grid-area: 3 / 2;
+    }
+
+    #font-color {
+        grid-area: 4 / 5;
+    }
+
+
+    .download {
+        text-decoration: none;
+        color: #ffffff;
+        background-color: #8f44bb;
+        border-radius: 15px;
+        grid-area: 6 / 4 / 6 / 6;
+        justify-content: space-evenly;
+        padding: 0.5em;
+    }
+
+    .canvas-container {
+        padding-top: 0em;
+    }
+
+    canvas {
+        width: 450px;
+        height: 500px;
+    }
+
 }
 
 
@@ -238,13 +309,15 @@ header a:hover {
 .icon-box {
     justify-content: center;
 }
+
 .s-text {
     color: #dcd8d8;
     font-size: 13px;
     font-weight: 400;
     text-align: center;
-    padding: 1em ;
+    padding: 1em;
 }
+
 .icon-box a {
     display: block;
     padding: 1em 1em;
@@ -262,4 +335,3 @@ header a:hover {
     font-size: 22px;
     padding: 1.2em;
 }
-

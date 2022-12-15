@@ -63,6 +63,7 @@ function renderMeme(imgUrl) {
     drawText(txt, x, y, color, size, align)
     var { txt, color, size, align, x, y } = gMeme.lines[2]
     drawText(txt, x, y, color, size, align)
+    
 }
 
 function getMeme() {

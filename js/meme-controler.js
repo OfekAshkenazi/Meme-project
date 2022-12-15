@@ -1,17 +1,15 @@
 'use strict'
 let gLine = 0
+
 function onImageClicked(imageId) {
     const theImage = gImgs.find(image => image.id === imageId)
     gMeme.image = theImage
-    // setTimeout(() => {
-        document.querySelector('.main-section').style.display = "none"
-        document.querySelector('.meme-area').style.display = "block"
-        renderMeme(gMeme.image.url)
-    // }, 700)
+    document.querySelector('.main-section').style.display = "none"
+    document.querySelector('.meme-area').style.display = "block"
+    renderMeme(gMeme.image.url)
 
 
 }
-
 
 function onSwitchLine() {
     gLine === 2 ? gLine = 0 : gLine++

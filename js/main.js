@@ -7,7 +7,7 @@ const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 
 
 function onInit() {
-    gElCanvas = document.querySelector('.canvas')
+    gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
     addListeners()
 
@@ -21,6 +21,8 @@ function addListeners() {
     // addTouchListeners()
     // window.addEventListener('resize', () => {
     //     resizeCanvas()
+    //     renderMeme(gMeme.image.url)
+
     // })
 }
 
@@ -39,7 +41,6 @@ function addTouchListeners() {
 
 
 function onMoveToGallery() {
-    console.log('hi')
     document.querySelector('.main-section').style.display = "block"
     document.querySelector('.meme-area').style.display = "none"
 }
@@ -77,7 +78,9 @@ function getEvPos(ev) {
     return pos
 }
 
-/// no need its a meme 
+
+
+// not in use 
 function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container')
     gElCanvas.width = elContainer.offsetWidth
