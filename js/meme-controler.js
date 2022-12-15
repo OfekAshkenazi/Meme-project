@@ -45,6 +45,16 @@ function onSetLineTxt() {
     renderMeme()
 }
 
+
+function onStrokeSet() {
+    const inputValue = document.getElementById('stroke-color').value
+    const meme = getMeme()
+    meme.lines.forEach(line => {
+        line.stroke = inputValue
+    })
+    renderMeme()
+}
+
 function onColorSet() {
     const inputValue = document.getElementById('font-color').value
     const meme = getMeme()

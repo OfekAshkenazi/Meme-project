@@ -22,9 +22,12 @@
 
         <section>
             <!-- <input class="search-bar" type="text" placeHolder="Search"> -->
-            <div class="search-area flex">
-                <input class="search-bar" id="search" type="text" placeHolder="Search" onkeyup="onFilterGallery()">
-                <label for="search"><img src="images/Forme_9.png" alt="" onclick="onFilterGallery()"></label>
+            <div class="search-area flexc">
+                <div class="flex search">
+                    <input class="search-bar" id="search" type="text" placeHolder="Search" onkeyup="onFilterGallery()">
+                    <label for="search"><img src="images/Forme_9.png" alt="" onclick="onFilterGallery()"></label>
+                </div>
+                <p class="keyWords flex"></p>
             </div>
             <div class="meme-image-area">
 
@@ -66,7 +69,7 @@
                     style="outline: 1px solid rgb(13, 13, 13); background-color: white;"></canvas>
             </div>
 
-
+            <!-- etidor-controler -->
             <div class="editor grid">
                 <input type="text" id="meme-text" placeholder="Enter Text Here" value="" onkeyup="onSetLineTxt()">
 
@@ -100,11 +103,11 @@
                     <option value="arial">Arial</option>
                     <option value="poppins">poppins</option>
                     <option value="fantasy">fantasy</option>
-
-
                 </select>
 
-
+                <input type="color" title="stroke-color" class="style-edit-btn icon-border-out"
+                    id="stroke-color" value="#dc143c" onchange="onStrokeSet()">
+                <label class="style-edit-btn stroke-color" for="stroke-color">S</label>
 
                 <a href="#" class="download flex" onclick="downloadImg(this)" download="my-img.jpg"><img
                         src="images/Forme_8.png"> Download</a>

@@ -11,8 +11,6 @@ function onInit() {
     gCtx = gElCanvas.getContext('2d')
     addListeners()
     renderGalleryImage()
-
-
 }
 
 function addListeners() {

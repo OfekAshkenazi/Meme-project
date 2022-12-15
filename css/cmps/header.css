@@ -10,7 +10,7 @@ header a {
     color: #ffffff;
     letter-spacing: 0.5px;
     font-size: 21px;
-    min-width: 150px;
+    min-width: 100px;
 }
 
 header a:hover {

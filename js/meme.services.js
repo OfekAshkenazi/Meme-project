@@ -11,7 +11,8 @@ var gMeme = {
             color: 'white',
             x: 20,
             y: 35,
-            font: 'impact'
+            font: 'impact',
+            stroke: 'black'
         },
 
     ]
@@ -23,8 +24,8 @@ function renderMeme() {
     img.src = meme.image.url
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
     meme.lines.map(line => {
-        var { txt, color, size, align, x, y, font } = line
-        drawText(txt, x, y, color, size, align, font)
+        var { txt, color, size, align, x, y, font, stroke } = line
+        drawText(txt, x, y, color, size, align, font, stroke)
     })
 }
 
@@ -32,9 +33,9 @@ function getMeme() {
     return gMeme
 }
 
-function drawText(text, x, y, color, size, align, font) {
+function drawText(text, x, y, color, size, align, font, stroke) {
     gCtx.lineWidth = 1
-    gCtx.strokeStyle = 'black'
+    gCtx.strokeStyle = stroke
     gCtx.fillStyle = color;
     gCtx.font = `${size + 'px'} ${font}`;
     gCtx.textAlign = align;

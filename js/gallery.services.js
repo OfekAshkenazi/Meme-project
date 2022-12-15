@@ -1,7 +1,9 @@
 'use stict'
-var filterImg
+var filterImg = []
 
-var gImgs = [
+let gkeyWords = ['politician', 'people', 'president', 'dogs', 'funny']
+
+let gImgs = [
     { id: 1, url: 'images/1.jpg', keywords: ['politician', 'president'] },
     { id: 2, url: 'images/2.jpg', keywords: ['dogs', 'cute'] },
     { id: 3, url: 'images/3.jpg', keywords: ['baby', 'dogs'] },
@@ -23,16 +25,29 @@ var gImgs = [
     { id: 19, url: 'images/19.jpg', keywords: ['people', 'cat'] },
 ]
 
+
+
+
+function renderKeyWords() {
+    const keys = getKeys()
+    let strHtmls = keys.map(key => {
+        return `<p class="pointer" onclick="onFilterByClick(this)">${key}</p>`
+    })
+    document.querySelector('.keyWords').innerHTML = strHtmls.join('')
+}
+
+function getKeys() {
+    return gkeyWords
+}
+
 function getImages() {
     return gImgs
 }
 
-
-
-
 function renderGalleryImage() {
+    renderKeyWords()
     let images = filterGallary()
-    if(!images.length) {
+    if (!images.length) {
         images = getImages()
     }
 
@@ -43,18 +58,37 @@ function renderGalleryImage() {
     document.querySelector('.meme-image-area').innerHTML = strHtmls.join('')
 }
 
-
-
 function onFilterGallery() {
     renderGalleryImage()
 }
 
 function filterGallary() {
-    const inputFilter = document.getElementById('search').value
+    var inputFilter = document.getElementById('search').value
     const images = getImages()
     filterImg = images.filter(image => image.keywords.includes(inputFilter))
-
     return filterImg
-
 }
 
+function onFilterByClick(key) {
+    renderGalleryByClick(key)
+}
+
+function renderGalleryByClick(key) {
+    renderKeyWords()
+    let filterImages = filterByClick(key)
+
+    let strHtmls = filterImages.map(image => {
+        return `<div><img class="image ${image.id}" onclick="onImageClicked(${image.id},this)" src="./images/${image.id}.jpg"></div>`
+    })
+
+    document.querySelector('.meme-image-area').innerHTML = strHtmls.join('')
+    
+}
+
+function filterByClick(key) {
+    const keyText = key.innerText.toLowerCase()
+    console.log(keyText)
+    const images = getImages()
+    filterImg = images.filter(image => image.keywords.includes(keyText))
+    return filterImg
+}
