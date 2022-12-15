@@ -8,36 +8,14 @@ var gMeme = {
             txt: '',
             size: 40,
             align: 'left',
-            color: 'red',
+            color: 'white',
             x: 20,
-            y: 35
+            y: 35,
+            font: 'impact'
         },
 
     ]
 }
-
-var gImgs = [
-    { id: 1, url: 'images/1.jpg', keywords: ['funny', 'cat'] },
-    { id: 2, url: 'images/2.jpg', keywords: ['funny', 'cat'] },
-    { id: 3, url: 'images/3.jpg', keywords: ['funny', 'cat'] },
-    { id: 4, url: 'images/4.jpg', keywords: ['funny', 'cat'] },
-    { id: 5, url: 'images/5.jpg', keywords: ['funny', 'cat'] },
-    { id: 6, url: 'images/6.jpg', keywords: ['funny', 'cat'] },
-    { id: 7, url: 'images/7.jpg', keywords: ['funny', 'cat'] },
-    { id: 8, url: 'images/8.jpg', keywords: ['funny', 'cat'] },
-    { id: 9, url: 'images/9.jpg', keywords: ['funny', 'cat'] },
-    { id: 10, url: 'images/10.jpg', keywords: ['funny', 'cat'] },
-    { id: 11, url: 'images/11.jpg', keywords: ['funny', 'cat'] },
-    { id: 12, url: 'images/12.jpg', keywords: ['funny', 'cat'] },
-    { id: 13, url: 'images/13.jpg', keywords: ['funny', 'cat'] },
-    { id: 14, url: 'images/14.jpg', keywords: ['funny', 'cat'] },
-    { id: 15, url: 'images/15.jpg', keywords: ['funny', 'cat'] },
-    { id: 16, url: 'images/16.jpg', keywords: ['funny', 'cat'] },
-    { id: 17, url: 'images/17.jpg', keywords: ['funny', 'cat'] },
-    { id: 18, url: 'images/18.jpg', keywords: ['funny', 'cat'] },
-    { id: 19, url: 'images/19.jpg', keywords: ['funny', 'cat'] },
-]
-
 
 function renderMeme() {
     let img = new Image()
@@ -45,8 +23,8 @@ function renderMeme() {
     img.src = meme.image.url
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
     meme.lines.map(line => {
-        var { txt, color, size, align, x, y } = line
-        drawText(txt, x, y, color, size, align)
+        var { txt, color, size, align, x, y, font } = line
+        drawText(txt, x, y, color, size, align, font)
     })
 }
 
@@ -54,13 +32,58 @@ function getMeme() {
     return gMeme
 }
 
-function drawText(text, x, y, color, size, align) {
+function drawText(text, x, y, color, size, align, font) {
     gCtx.lineWidth = 1
     gCtx.strokeStyle = 'black'
     gCtx.fillStyle = color;
-    gCtx.font = `${size + 'px'} poppins-extra-bold`;
+    gCtx.font = `${size + 'px'} ${font}`;
     gCtx.textAlign = align;
     // gCtx.textBaseline = 'middle'
     gCtx.fillText(text, x, y) // Draws (fills) a given text at the given (x, y) position.
     gCtx.strokeText(text, x, y) // Draws (strokes) a given text at the given (x, y) position.
+}
+
+
+function changeFonts() {
+    const fontFam = document.getElementById('fonts').value
+    const meme = getMeme()
+    meme.lines.forEach(line => {
+        line.font = fontFam
+    })
+}
+
+function alignItmes(txt) {
+    const meme = getMeme()
+    switch (txt) {
+        case 'left':
+            meme.lines[gLine].align = 'left'
+            break
+        case 'center':
+            meme.lines[gLine].align = 'center'
+            break
+        case 'right':
+            meme.lines[gLine].align = 'right'
+            break
+    }
+}
+
+function removeLine() {
+    const meme = getMeme()
+    meme.lines.splice(gLine, 1)
+    gLineMax--
+}
+
+function addLine() {
+    const meme = getMeme()
+    meme.lines.push({
+        isDrag: false,
+        txt: '',
+        size: 40,
+        align: 'center',
+        color: 'white',
+        x: 200,
+        y: getRandomInt(20, 300),
+        font: 'impact'
+    },)
+    gLineMax++
 }

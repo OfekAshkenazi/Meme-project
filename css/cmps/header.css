@@ -1,0 +1,27 @@
+header {
+    width: 100%;
+    border-radius: 3em;
+    padding: 1.7em;
+    background-image: linear-gradient(-86deg, #33be6d 0%, #0c98b9 100%);
+    justify-content: space-around;
+}
+
+header a {
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    font-size: 21px;
+    min-width: 150px;
+}
+
+header a:hover {
+    background-color: #ffffff;
+    border-radius: 2em;
+    color: #21ac91;
+}
+
+.logo {
+    text-transform: uppercase;
+    color: #ffffff;
+    font-size: 22px;
+    padding-left: 1em;
+}

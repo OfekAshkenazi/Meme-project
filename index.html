@@ -6,10 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
-    <title>meme project</title>
+    <title></title>
 </head>
 
 <body onload="onInit()">
+
+
+    <!-- gallery area -->
     <section class="main-section">
         <header class="flex">
             <div class="logo">logo</div>
@@ -19,7 +22,10 @@
 
         <section>
             <!-- <input class="search-bar" type="text" placeHolder="Search"> -->
-            <input class="search-bar bar2" type="text" placeHolder="Search">
+            <div class="search-area flex">
+                <input class="search-bar" id="search" type="text" placeHolder="Search" onkeyup="onFilterGallery()">
+                <label for="search"><img src="images/Forme_9.png" alt="" onclick="onFilterGallery()"></label>
+            </div>
             <div class="meme-image-area">
 
 
@@ -75,7 +81,7 @@
                 <button class="btn-font font-down pointer style-edit-btn icon-border-out"
                     onclick="onChangeFont(this)">A-</button>
 
-                <button class="switch-line pointer" onclick="onSwitchLine()"> &#8593 &#8595</button>
+                <button class="switch-line pointer style-edit-btn" onclick="onSwitchLine()"> &#8593 &#8595</button>
                 <button class="add-line pointer style-edit-btn" onclick="onAddLine()">+</button>
                 <button class="remove-line pointer style-edit-btn" onclick="onRemoveLine()"><img
                         src="images/Forme_4.png"></button>
@@ -90,10 +96,12 @@
                     onclick="onAlignItems('right')"><img src="images/Rectangle_4_copie_5.png"></button>
 
                 <select onchange="onChangeFonts()" name="fonts" id="fonts">
-                    <option value="ariel">Ariel</option>
-                    <option value="poppins">poppins</option>
                     <option value="impact">Impact</option>
-                    
+                    <option value="arial">Arial</option>
+                    <option value="poppins">poppins</option>
+                    <option value="fantasy">fantasy</option>
+
+
                 </select>
 
 

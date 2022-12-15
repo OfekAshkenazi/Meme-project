@@ -1,19 +1,60 @@
 'use stict'
-var filterImg = []
+var filterImg
+
+var gImgs = [
+    { id: 1, url: 'images/1.jpg', keywords: ['politician', 'president'] },
+    { id: 2, url: 'images/2.jpg', keywords: ['dogs', 'cute'] },
+    { id: 3, url: 'images/3.jpg', keywords: ['baby', 'dogs'] },
+    { id: 4, url: 'images/4.jpg', keywords: ['funny', 'cat'] },
+    { id: 5, url: 'images/5.jpg', keywords: ['people', 'cute'] },
+    { id: 6, url: 'images/6.jpg', keywords: ['people', 'cute'] },
+    { id: 7, url: 'images/7.jpg', keywords: ['funny', 'cute'] },
+    { id: 8, url: 'images/8.jpg', keywords: ['funny', 'people'] },
+    { id: 9, url: 'images/9.jpg', keywords: ['funny', 'cute'] },
+    { id: 10, url: 'images/10.jpg', keywords: ['politician', 'president'] },
+    { id: 11, url: 'images/11.jpg', keywords: ['people', 'cute'] },
+    { id: 12, url: 'images/12.jpg', keywords: ['people', 'cat'] },
+    { id: 13, url: 'images/13.jpg', keywords: ['people', 'president'] },
+    { id: 14, url: 'images/14.jpg', keywords: ['people', 'cat'] },
+    { id: 15, url: 'images/15.jpg', keywords: ['people', 'cat'] },
+    { id: 16, url: 'images/16.jpg', keywords: ['people', 'cat'] },
+    { id: 17, url: 'images/17.jpg', keywords: ['people', 'cat'] },
+    { id: 18, url: 'images/18.jpg', keywords: ['people', 'cat'] },
+    { id: 19, url: 'images/19.jpg', keywords: ['people', 'cat'] },
+]
 
 function getImages() {
     return gImgs
 }
 
 
-renderGalleryImage()
 
 
 function renderGalleryImage() {
-    let images = getImages()
+    let images = filterGallary()
+    if(!images.length) {
+        images = getImages()
+    }
+
     let strHtmls = images.map(image => {
         return `<div><img class="image ${image.id}" onclick="onImageClicked(${image.id},this)" src="./images/${image.id}.jpg"></div>`
     })
 
     document.querySelector('.meme-image-area').innerHTML = strHtmls.join('')
 }
+
+
+
+function onFilterGallery() {
+    renderGalleryImage()
+}
+
+function filterGallary() {
+    const inputFilter = document.getElementById('search').value
+    const images = getImages()
+    filterImg = images.filter(image => image.keywords.includes(inputFilter))
+
+    return filterImg
+
+}
+

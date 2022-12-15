@@ -1,6 +1,8 @@
 'use strict'
 let gLine = 0
 let gLineMax = 0
+
+
 function onImageClicked(imageId) {
     const theImage = gImgs.find(image => image.id === imageId)
     gMeme.image = theImage
@@ -11,46 +13,24 @@ function onImageClicked(imageId) {
 
 }
 
+function onChangeFonts() {
+    changeFonts()
+    renderMeme()
 
-
+}
 
 function onAlignItems(txt) {
-    const meme = getMeme()
-    switch (txt) {
-        case 'left':
-            meme.lines[gLine].align = 'left'
-            break
-        case 'center':
-            meme.lines[gLine].align = 'center'
-            break
-        case 'right':
-            meme.lines[gLine].align = 'right'
-            break
-    }
-
+    alignItmes(txt)
     renderMeme()
 }
 
 function onRemoveLine() {
-    const meme = getMeme()
-    meme.lines.splice(gLine, 1)
-    gLineMax--
+    removeLine()
     renderMeme()
-
 }
 
 function onAddLine() {
-    const meme = getMeme()
-    meme.lines.push({
-        isDrag: false,
-        txt: '',
-        size: 40,
-        align: 'center',
-        color: 'red',
-        x: 200,
-        y: getRandomInt(20, 300)
-    },)
-    gLineMax++
+    addLine()
     renderMeme()
 }
 

@@ -6,17 +6,14 @@ let gStartPos
 
 const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 
-
-
 function onInit() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
     addListeners()
+    renderGalleryImage()
+
 
 }
-
-
-// setLineTxt()
 
 function addListeners() {
     addMouseListeners()
@@ -47,7 +44,6 @@ function onMoveToGallery() {
     document.querySelector('.meme-area').style.display = "none"
 }
 
-
 function onDown(ev) {
     const pos = getEvPos(ev)
     gStartPos = pos
@@ -55,8 +51,6 @@ function onDown(ev) {
     meme.lines[gLine].isDrag = true
     document.body.style.cursor = 'grabbing'
 }
-
-
 
 function onMove(ev) {
     const meme = getMeme()
@@ -109,8 +103,6 @@ function getEvPos(ev) {
     }
     return pos
 }
-
-
 
 // not in use 
 function resizeCanvas() {
