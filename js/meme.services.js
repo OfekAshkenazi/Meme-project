@@ -14,9 +14,13 @@ var gMeme = {
             font: 'impact',
             stroke: 'black'
         },
-
+    ],
+    emoji: [
+        
     ]
+
 }
+
 
 function renderMeme() {
     let img = new Image()
@@ -26,6 +30,35 @@ function renderMeme() {
     meme.lines.map(line => {
         var { txt, color, size, align, x, y, font, stroke } = line
         drawText(txt, x, y, color, size, align, font, stroke)
+    })
+    renderEm()
+
+}
+
+
+function onClickEm(image) {
+    const meme = getMeme()
+    meme.emoji.push({
+        url: image.src,
+        x: 20,
+        y: 35,
+        isDrag: false,
+        sizeX: 45,
+        sizeY: 45,
+    },)
+
+    gEmojiMax++
+    renderEm()
+}
+
+
+function renderEm() {
+    const meme = getMeme()
+    meme.emoji.map(em => {
+        var { url, x, y, sizeX, sizeY } = em
+        let img = new Image()
+        img.src = url
+        gCtx.drawImage(img, x, y, sizeX, sizeY)
     })
 }
 

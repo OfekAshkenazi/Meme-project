@@ -1,3 +1,4 @@
+
 .meme-image-area {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 240px));
@@ -6,6 +7,8 @@
     justify-content: center;
     border-radius: 15px;
     background-color: #383b42;
+    max-height: 440px;
+    overflow-y: scroll;
 }
 
 .meme-image-area img {

@@ -1,6 +1,8 @@
 'use strict'
 let gLine = 0
 let gLineMax = 0
+let gEmoji = 0
+let gEmojiMax = -1
 
 
 function onImageClicked(imageId) {
@@ -12,6 +14,9 @@ function onImageClicked(imageId) {
 
 
 }
+
+
+
 
 function onChangeFonts() {
     changeFonts()
@@ -36,6 +41,8 @@ function onAddLine() {
 
 function onSwitchLine() {
     gLine === gLineMax ? gLine = 0 : gLine++
+    gEmoji === gEmojiMax ? gEmoji = 0 : gEmoji++
+    console.log(gEmojiMax, gEmoji)
 }
 
 function onSetLineTxt() {

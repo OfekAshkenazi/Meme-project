@@ -83,12 +83,12 @@
 
                 <button class="btn-font font-down pointer style-edit-btn icon-border-out"
                     onclick="onChangeFont(this)">A-</button>
-
+                <!-- lins area -->
                 <button class="switch-line pointer style-edit-btn" onclick="onSwitchLine()"> &#8593 &#8595</button>
                 <button class="add-line pointer style-edit-btn" onclick="onAddLine()">+</button>
                 <button class="remove-line pointer style-edit-btn" onclick="onRemoveLine()"><img
                         src="images/Forme_4.png"></button>
-
+                <!-- align area -->
                 <button class="switch-align left pointer icon-border-out style-edit-btn"
                     onclick="onAlignItems('left')"><img src="images/Rectangle_4_copie_3.png"></button>
 
@@ -97,22 +97,46 @@
 
                 <button class="switch-align right pointer icon-border-out style-edit-btn"
                     onclick="onAlignItems('right')"><img src="images/Rectangle_4_copie_5.png"></button>
-
+                <!-- font area -->
                 <select onchange="onChangeFonts()" name="fonts" id="fonts">
                     <option value="impact">Impact</option>
                     <option value="arial">Arial</option>
                     <option value="poppins">poppins</option>
                     <option value="fantasy">fantasy</option>
+                    <option value="poppins-extra-bold">poppins extra bold</option>
                 </select>
 
-                <input type="color" title="stroke-color" class="style-edit-btn icon-border-out"
-                    id="stroke-color" value="#dc143c" onchange="onStrokeSet()">
+                <input type="color" title="stroke-color" class="style-edit-btn icon-border-out" id="stroke-color"
+                    value="#dc143c" onchange="onStrokeSet()">
                 <label class="style-edit-btn stroke-color" for="stroke-color">S</label>
 
                 <a href="#" class="download flex" onclick="downloadImg(this)" download="my-img.jpg"><img
                         src="images/Forme_8.png"> Download</a>
 
                 <a href="#" onclick="onUploadImg()" class="Share a-clean flex"><img src="images/Forme_7.png"> Share</a>
+
+                <div class="em-area">
+                    <img class="em em1" onclick="onClickEm(this)" src="images/Emoji_on.png">
+                    <img class="em em2" onclick="onClickEm(this)" src="images/emoji_off.png">
+                    <img class="em em3" onclick="onClickEm(this)" src="images/Calque_8.png">
+                    <img class="em em4" onclick="onClickEm(this)" src="images/Calque_7.png">
+                    <img class="em em1" onclick="onClickEm(this)" src="images/Emoji_on.png">
+                    <img class="em em2" onclick="onClickEm(this)" src="images/emoji_off.png">
+                    <img class="em em3" onclick="onClickEm(this)" src="images/Calque_8.png">
+                    <img class="em em4" onclick="onClickEm(this)" src="images/Calque_7.png">
+                    <img class="em em1" onclick="onClickEm(this)" src="images/Emoji_on.png">
+                    <img class="em em2" onclick="onClickEm(this)" src="images/emoji_off.png">
+                    <img class="em em3" onclick="onClickEm(this)" src="images/Calque_8.png">
+                    <img class="em em4" onclick="onClickEm(this)" src="images/Calque_7.png">
+                    <img class="em em1" onclick="onClickEm(this)" src="images/Emoji_on.png">
+                    <img class="em em2" onclick="onClickEm(this)" src="images/emoji_off.png">
+                    <img class="em em3" onclick="onClickEm(this)" src="images/Calque_8.png">
+                    <img class="em em4" onclick="onClickEm(this)" src="images/Calque_7.png">
+                    <img class="em em1" onclick="onClickEm(this)" src="images/Emoji_on.png">
+                    <img class="em em2" onclick="onClickEm(this)" src="images/emoji_off.png">
+                    <img class="em em3" onclick="onClickEm(this)" src="images/Calque_8.png">
+                    <img class="em em4" onclick="onClickEm(this)" src="images/Calque_7.png">
+                </div>
             </div>
 
         </div>
