@@ -60,9 +60,7 @@ function onSetLineTxt() {
 function onStrokeSet() {
     const inputValue = document.getElementById('stroke-color').value
     const meme = getMeme()
-    meme.lines.forEach(line => {
-        line.stroke = inputValue
-    })
+    meme.lines[gLine].stroke = inputValue
     renderMeme()
     tapping.play()
 }
@@ -70,9 +68,7 @@ function onStrokeSet() {
 function onColorSet() {
     const inputValue = document.getElementById('font-color').value
     const meme = getMeme()
-    meme.lines.forEach(line => {
-        line.color = inputValue
-    })
+    meme.lines[gLine].color = inputValue
     renderMeme()
     tapping.play()
 }
@@ -82,12 +78,8 @@ function onChangeFont(elBtn) {
     const meme = getMeme()
     if (elBtn.innerText === 'A+') {
         meme.lines[gLine].size++
-        meme.emoji[gEmoji].sizeX++
-        meme.emoji[gEmoji].sizeY++
     } else {
         meme.lines[gLine].size--
-        meme.emoji[gEmoji].sizeX--
-        meme.emoji[gEmoji].sizeY--
     }
     renderMeme()
     tapping.play()
