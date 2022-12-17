@@ -1,22 +1,36 @@
 
+.meme-image-section {
+    background-color: #383b42;
+    border-radius: 10px;
+
+}
+
+
 .meme-image-area {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 120px));
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 240px));
     gap: 2.7em;
     padding: 1em;
     justify-content: center;
     border-radius: 15px;
-    background-color: #383b42;
-    max-height: 440px;
+    
+    max-height: 45vh;
     overflow-y: scroll;
+}
+
+
+@media (min-width:800px) {
+    .meme-image-area {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 240px));
+
+
+    }
 }
 
 .meme-image-area img {
     border-radius: 15px;
+    border: 1px solid gray;
     cursor: pointer;
-    min-height: 200px;
-    max-width: 230px;
-
 }
 
 .search-bar {
@@ -32,8 +46,6 @@
     margin-top: 1em;
     justify-content: space-around;
     padding: 1em 0.2em;
-    background-color: #383b42;
-    border-radius: 10px;
 }
 
 .search {
@@ -45,7 +57,7 @@
     height: 100%;
     background-position: center center;
     background-size: cover;
-    border: 1px solid gray;
+
 }
 
 .image:hover {
@@ -58,6 +70,10 @@
     gap: 0px 10px;
     /* font-size: 16px; */
 }
+
+
+
+
 
 @media (min-width: 1100px) {
     .search-area {

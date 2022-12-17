@@ -3,7 +3,7 @@ header {
     border-radius: 3em;
     padding: 1.7em;
     background-image: linear-gradient(-86deg, #33be6d 0%, #0c98b9 100%);
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 header a {
@@ -24,4 +24,68 @@ header a:hover {
     color: #ffffff;
     font-size: 22px;
     padding-left: 1em;
+}
+
+.logo img {
+    max-width: 125px;
+}
+
+.main-screen {
+    position: fixed;
+    inset: 0;
+    background-color: rgb(0 0 0 / 70%);
+    cursor: pointer;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .6s;
+    z-index: 1;
+
+}
+
+body.menu-open .main-screen {
+    pointer-events: all;
+    opacity: 1;
+}
+
+body.menu-open .main-nav {
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    background-image: linear-gradient(-86deg, #0ada61 0%, #10c3eb 100%);
+    gap: 10px;
+    border-radius: 10px;
+    min-height: 100vh;
+
+}
+
+.main-nav a {
+    background-color: ;
+}
+
+.main-nav {
+    position: fixed;
+    right: 0;
+    top: 0;
+    display: none;
+    /* transform: translateX(100%); */
+}
+
+.menu-toggle {
+    display: block;
+    background-image: linear-gradient(-86deg, #33be6d 0%, #0c98b9 100%);
+    border-radius: 20px;
+    border: none;
+    color: #ffffff;
+
+    
+}
+
+@media (min-width: 800px) {
+    .menu-toggle {
+        display: none;
+    }
+    .main-nav {
+        position: relative;
+        display: flex;
+    }
 }

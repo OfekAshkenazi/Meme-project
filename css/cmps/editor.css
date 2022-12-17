@@ -147,7 +147,10 @@
 }
 
 .em {
-    width: 55px;
+    max-width: 55px;
+    max-height: 50px;
+    padding: 0.3em;
+    cursor: pointer;
 }
 
 .em-area {
@@ -156,7 +159,10 @@
     overflow-x: scroll;
     max-width: 350px;
 }
+.rotate img{
+    max-width: 100%;
 
+}
 ::-webkit-scrollbar {
     width: 10px;
 }
@@ -272,6 +278,9 @@
     .em-area {
         grid-area: 5 / 1 / 5 / 6;
         max-width: 500px;
+    }
+    .rotate  {
+        grid-area: 4 / 3 / 4 / 3;
     }
 
 }

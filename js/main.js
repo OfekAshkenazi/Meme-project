@@ -49,7 +49,9 @@ function onDown(ev) {
     // if(gEmoji > 0) {
 
     // }
-    meme.emoji[gEmoji].isDrag = true
+    if (gEmoji > 0) {
+        meme.emoji[gEmoji].isDrag = true
+    }
     meme.lines[gLine].isDrag = true
     document.body.style.cursor = 'grabbing'
     gStartPos = pos
@@ -59,14 +61,17 @@ function onMove(ev) {
     const meme = getMeme()
 
     if (!meme.lines[gLine].isDrag) return
-    if (!meme.emoji[gEmoji].isDrag) return
+    // if (!meme.emoji[gEmoji].isDrag) return
 
     const pos = getEvPos(ev)
     // Calc the delta , the diff we moved
     const dx = pos.x - gStartPos.x
     const dy = pos.y - gStartPos.y
     moveText(dx, dy)
-    moveEmoji(dx, dy)
+    if (gEmojiMax >= 0) {
+        moveEmoji(dx, dy)
+
+    }
     // Save the last pos , we remember where we`ve been and move accordingly
     gStartPos = pos
     // The canvas is render again after every move
@@ -83,14 +88,19 @@ function moveText(dx, dy) {
 
 function moveEmoji(dx, dy) {
     const meme = getMeme()
+
     meme.emoji[gEmoji].x += dx
     meme.emoji[gEmoji].y += dy
+
+
 }
 
 function onUp() {
     const meme = getMeme()
     meme.lines[gLine].isDrag = false
-    meme.emoji[gEmoji].isDrag = false
+    if (gEmoji > 0) {
+        meme.emoji[gEmoji].isDrag = false
+    }
     document.body.style.cursor = 'default'
 }
 
@@ -121,4 +131,9 @@ function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container')
     gElCanvas.width = elContainer.offsetWidth
     gElCanvas.height = elContainer.offsetHeight
+}
+
+
+function onToggleMenu() {
+    document.body.classList.toggle('menu-open')
 }

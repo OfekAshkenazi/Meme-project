@@ -10,6 +10,7 @@
     box-shadow: 1px 5px 0 rgba(92, 92, 92, 0.55), inset 0 5px 0 rgba(255, 255, 255, 0.58);
     border-radius: 10px;
     background-color: #ffffff;
+    cursor: pointer;
 }
 
 .grid {
@@ -19,7 +20,16 @@
 .flex {
     display: flex;
 }
+.list-clean {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
 
+.list-clean li a {
+    text-decoration: none;
+}
 .a-clean {
     text-decoration: none;
     list-style-type: none;

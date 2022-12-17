@@ -45,7 +45,7 @@ function getImages() {
 }
 
 function renderGalleryImage() {
-    renderKeyWords()
+    
     let images = filterGallary()
     if (!images.length) {
         images = getImages()
@@ -54,8 +54,9 @@ function renderGalleryImage() {
     let strHtmls = images.map(image => {
         return `<div><img class="image ${image.id}" onclick="onImageClicked(${image.id},this)" src="./images/${image.id}.jpg"></div>`
     })
-
+    
     document.querySelector('.meme-image-area').innerHTML = strHtmls.join('')
+    renderKeyWords()
 }
 
 function onFilterGallery() {
@@ -82,7 +83,7 @@ function renderGalleryByClick(key) {
     })
 
     document.querySelector('.meme-image-area').innerHTML = strHtmls.join('')
-    
+
 }
 
 function filterByClick(key) {

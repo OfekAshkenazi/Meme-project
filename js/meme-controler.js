@@ -18,6 +18,10 @@ function onImageClicked(imageId) {
 
 
 
+function onRotate() {
+
+}
+
 function onChangeFonts() {
     changeFonts()
     renderMeme()
@@ -42,7 +46,7 @@ function onAddLine() {
 function onSwitchLine() {
     gLine === gLineMax ? gLine = 0 : gLine++
     gEmoji === gEmojiMax ? gEmoji = 0 : gEmoji++
-    console.log(gEmojiMax, gEmoji)
+    // console.log(gEmojiMax, gEmoji)
 }
 
 function onSetLineTxt() {

@@ -6,6 +6,7 @@
 @import './cmps/header.css';
 @import './cmps/editor.css';
 @import './cmps/footer.css';
+@import './cmps/dropDown.css';
 
 * {
     box-sizing: border-box;
