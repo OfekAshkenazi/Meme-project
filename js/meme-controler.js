@@ -2,7 +2,7 @@
 let gLine = 0
 let gLineMax = 0
 let gEmoji = 0
-let gEmojiMax = -1
+let gEmojiMax = 0
 
 
 function onImageClicked(imageId) {
@@ -11,42 +11,41 @@ function onImageClicked(imageId) {
     document.querySelector('.main-section').style.display = "none"
     document.querySelector('.meme-area').style.display = "block"
     renderMeme()
-
-
+    tapping.play()
 }
 
-
-
-
 function onRotate() {
-
 }
 
 function onChangeFonts() {
     changeFonts()
     renderMeme()
-
+    tapping.play()
 }
 
 function onAlignItems(txt) {
     alignItmes(txt)
     renderMeme()
+    tapping.play()
 }
 
 function onRemoveLine() {
     removeLine()
     renderMeme()
+    tapping.play()
 }
 
 function onAddLine() {
     addLine()
     renderMeme()
+    tapping.play()
 }
 
 function onSwitchLine() {
     gLine === gLineMax ? gLine = 0 : gLine++
     gEmoji === gEmojiMax ? gEmoji = 0 : gEmoji++
     // console.log(gEmojiMax, gEmoji)
+    tapping.play()
 }
 
 function onSetLineTxt() {
@@ -54,6 +53,7 @@ function onSetLineTxt() {
     const meme = getMeme()
     meme.lines[gLine].txt = inputValue
     renderMeme()
+    tapping.play()
 }
 
 
@@ -64,6 +64,7 @@ function onStrokeSet() {
         line.stroke = inputValue
     })
     renderMeme()
+    tapping.play()
 }
 
 function onColorSet() {
@@ -73,22 +74,22 @@ function onColorSet() {
         line.color = inputValue
     })
     renderMeme()
-
+    tapping.play()
 }
 
 
 function onChangeFont(elBtn) {
     const meme = getMeme()
     if (elBtn.innerText === 'A+') {
-        meme.lines.forEach(line => {
-            line.size++
-        })
+        meme.lines[gLine].size++
+        meme.emoji[gEmoji].sizeX++
+        meme.emoji[gEmoji].sizeY++
     } else {
-        meme.lines.forEach(line => {
-            line.size--
-        })
+        meme.lines[gLine].size--
+        meme.emoji[gEmoji].sizeX--
+        meme.emoji[gEmoji].sizeY--
     }
-
     renderMeme()
+    tapping.play()
 }
 

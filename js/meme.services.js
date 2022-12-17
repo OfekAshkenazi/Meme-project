@@ -16,11 +16,32 @@ var gMeme = {
         },
     ],
     emoji: [
-        
+
     ]
 
 }
+function restGMeme() {
+    return gMeme = {
 
+        lines: [
+            {
+                isDrag: false,
+                txt: '',
+                size: 40,
+                align: 'left',
+                color: 'white',
+                x: 20,
+                y: 35,
+                font: 'impact',
+                stroke: 'black'
+            },
+        ],
+        emoji: [
+    
+        ]
+    
+    }
+}
 
 function renderMeme() {
     let img = new Image()
@@ -104,7 +125,9 @@ function alignItmes(txt) {
 function removeLine() {
     const meme = getMeme()
     meme.lines.splice(gLine, 1)
+    meme.emoji.splice(gEmoji, 1)
     gLineMax--
+    gEmojiMax--
 }
 
 function addLine() {

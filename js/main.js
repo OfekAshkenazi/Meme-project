@@ -3,7 +3,7 @@
 let gCtx
 let gElCanvas
 let gStartPos
-
+const tapping = new Audio('sounds/tap.wav')
 const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 
 function onInit() {
@@ -40,6 +40,8 @@ function addTouchListeners() {
 function onMoveToGallery() {
     document.querySelector('.main-section').style.display = "block"
     document.querySelector('.meme-area').style.display = "none"
+    tapping.play()
+    restGMeme()
 }
 
 function onDown(ev) {
@@ -55,6 +57,7 @@ function onDown(ev) {
     meme.lines[gLine].isDrag = true
     document.body.style.cursor = 'grabbing'
     gStartPos = pos
+    tapping.play()
 }
 
 function onMove(ev) {
@@ -88,11 +91,8 @@ function moveText(dx, dy) {
 
 function moveEmoji(dx, dy) {
     const meme = getMeme()
-
     meme.emoji[gEmoji].x += dx
     meme.emoji[gEmoji].y += dy
-
-
 }
 
 function onUp() {
@@ -135,5 +135,6 @@ function resizeCanvas() {
 
 
 function onToggleMenu() {
+    tapping.play()
     document.body.classList.toggle('menu-open')
 }

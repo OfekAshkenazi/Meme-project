@@ -23,10 +23,13 @@ let gImgs = [
     { id: 17, url: 'images/17.jpg', keywords: ['people', 'cat'] },
     { id: 18, url: 'images/18.jpg', keywords: ['people', 'cat'] },
     { id: 19, url: 'images/19.jpg', keywords: ['people', 'cat'] },
+    { id: 20, url: 'images/Drakeposting.jpg', keywords: ['people', 'cat'] },
+    { id: 21, url: 'images/girl.jpg', keywords: ['people', 'cat'] },
+    { id: 22, url: 'images/hot.jpg', keywords: ['people', 'cat'] },
+    { id: 23, url: 'images/jenny.jpg', keywords: ['people', 'cat'] },
+    { id: 24, url: 'images/meme.jpg', keywords: ['people', 'cat'] },
+    { id: 25, url: 'images/news.jpg', keywords: ['people', 'cat'] },
 ]
-
-
-
 
 function renderKeyWords() {
     const keys = getKeys()
@@ -52,7 +55,7 @@ function renderGalleryImage() {
     }
 
     let strHtmls = images.map(image => {
-        return `<div><img class="image ${image.id}" onclick="onImageClicked(${image.id},this)" src="./images/${image.id}.jpg"></div>`
+        return `<div><img class="image ${image.id}" onclick="onImageClicked(${image.id},this)" src="${image.url}"></div>`
     })
     
     document.querySelector('.meme-image-area').innerHTML = strHtmls.join('')
@@ -61,6 +64,8 @@ function renderGalleryImage() {
 
 function onFilterGallery() {
     renderGalleryImage()
+    
+
 }
 
 function filterGallary() {
@@ -83,7 +88,6 @@ function renderGalleryByClick(key) {
     })
 
     document.querySelector('.meme-image-area').innerHTML = strHtmls.join('')
-
 }
 
 function filterByClick(key) {
@@ -91,5 +95,6 @@ function filterByClick(key) {
     console.log(keyText)
     const images = getImages()
     filterImg = images.filter(image => image.keywords.includes(keyText))
+    tapping.play()
     return filterImg
 }

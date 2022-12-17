@@ -15,12 +15,12 @@
     font-size: 13px;
     font-weight: 400;
     text-align: center;
-    padding: 1em;
+    padding: 0.5em;
 }
 
 .icon-box a {
     display: block;
-    padding: 1em 1em;
+    padding: 0.5em 1em;
     /* text-align: center; */
 }
 
