@@ -42,6 +42,7 @@ function onMoveToGallery() {
     document.querySelector('.meme-area').style.display = "none"
     tapping.play()
     restGMeme()
+    
 }
 
 function onDown(ev) {
