@@ -42,7 +42,7 @@ function onMoveToGallery() {
     document.querySelector('.meme-area').style.display = "none"
     tapping.play()
     restGMeme()
-    
+
 }
 
 function onDown(ev) {
@@ -52,9 +52,7 @@ function onDown(ev) {
     // if(gEmoji > 0) {
 
     // }
-    if (gEmoji > 0) {
-        meme.emoji[gEmoji].isDrag = true
-    }
+
     meme.lines[gLine].isDrag = true
     document.body.style.cursor = 'grabbing'
     gStartPos = pos
@@ -72,10 +70,10 @@ function onMove(ev) {
     const dx = pos.x - gStartPos.x
     const dy = pos.y - gStartPos.y
     moveText(dx, dy)
-    if (gEmojiMax >= 0) {
-        moveEmoji(dx, dy)
 
-    }
+    // moveEmoji(dx, dy)
+
+
     // Save the last pos , we remember where we`ve been and move accordingly
     gStartPos = pos
     // The canvas is render again after every move
@@ -90,18 +88,18 @@ function moveText(dx, dy) {
 
 }
 
-function moveEmoji(dx, dy) {
-    const meme = getMeme()
-    meme.emoji[gEmoji].x += dx
-    meme.emoji[gEmoji].y += dy
-}
+// function moveEmoji(dx, dy) {
+//     const meme = getMeme()
+//     meme.emoji[gEmoji].x += dx
+//     meme.emoji[gEmoji].y += dy
+// }
 
 function onUp() {
     const meme = getMeme()
     meme.lines[gLine].isDrag = false
-    if (gEmoji > 0) {
-        meme.emoji[gEmoji].isDrag = false
-    }
+    // if (gEmoji > 0) {
+    //     meme.emoji[gEmoji].isDrag = false
+    // }
     document.body.style.cursor = 'default'
 }
 

@@ -69,6 +69,7 @@ function onClickEm(image) {
     },)
 
     gEmojiMax++
+    gEmoji++
     renderEm()
 }
 
