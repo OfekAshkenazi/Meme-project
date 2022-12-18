@@ -1,14 +1,12 @@
 'use strict'
 let gLine = 0
 let gLineMax = 0
-let gEmoji = 0
-let gEmojiMax = 0
-
 
 function onImageClicked(imageId) {
     const theImage = gImgs.find(image => image.id === imageId)
     gMeme.image = theImage
     document.querySelector('.main-section').style.display = "none"
+    document.querySelector('.saved-area').style.display = "none"
     document.querySelector('.meme-area').style.display = "block"
     renderMeme()
     tapping.play()
@@ -19,18 +17,15 @@ function onRotate() {
 
 function onClickEm(image) {
     const meme = getMeme()
-    meme.emoji.push({
+    meme.lines[gLine].emoji = {
         url: image.src,
         x: 20,
         y: 35,
         isDrag: false,
         sizeX: 45,
         sizeY: 45,
-    },)
-
-    gEmojiMax++
-    gEmoji++
-    renderEm()
+    }
+    renderMeme()
 }
 
 function onRandomMeme() {
@@ -81,8 +76,6 @@ function onAddLine() {
 
 function onSwitchLine() {
     gLine === gLineMax ? gLine = 0 : gLine++
-    gEmoji === gEmojiMax ? gEmoji = 0 : gEmoji++
-    // console.log(gEmojiMax, gEmoji)
     tapping.play()
     restInputText()
     infoMsg(`line now ${gLine + 1}`)

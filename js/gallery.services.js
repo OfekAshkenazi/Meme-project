@@ -31,9 +31,6 @@ let gImgs = [
     { id: 25, url: 'images/news.jpg', keywords: ['people', 'cat'] },
 ]
 
-
-
-
 function renderSavedGallery() {
     let savedMemes = loadFromStorage(STORAGE_KEY)
     if (!savedMemes || !savedMemes.length) return

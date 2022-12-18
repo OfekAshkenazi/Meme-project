@@ -13,16 +13,16 @@ var gMeme = {
             x: 20,
             y: 35,
             font: 'impact',
-            stroke: 'black'
+            stroke: 'black',
+            emoji: [],
+
         },
     ],
-    emoji: [
 
-    ],
     savedUrl: '',
 
-}
 
+}
 
 function getSavedMemes() {
     return gSavedMeme
@@ -41,12 +41,13 @@ function restGMeme() {
                 x: 20,
                 y: 35,
                 font: 'impact',
-                stroke: 'black'
+                stroke: 'black',
+                emoji: [],
+
             },
         ],
-        emoji: [
 
-        ]
+        savedUrl: '',
 
     }
 }
@@ -59,19 +60,14 @@ function renderMeme() {
     meme.lines.map(line => {
         var { txt, color, size, align, x, y, font, stroke } = line
         drawText(txt, x, y, color, size, align, font, stroke)
+        if (line.emoji) {
+            var { url, x, y, sizeX, sizeY } = line.emoji
+            let img = new Image()
+            img.src = url
+            gCtx.drawImage(img, x, y, sizeX, sizeY)
+        }
     })
-    renderEm()
 
-}
-
-function renderEm() {
-    const meme = getMeme()
-    meme.emoji.map(em => {
-        var { url, x, y, sizeX, sizeY } = em
-        let img = new Image()
-        img.src = url
-        gCtx.drawImage(img, x, y, sizeX, sizeY)
-    })
 }
 
 function getMeme() {
@@ -115,10 +111,8 @@ function alignItmes(txt) {
 function removeLine() {
     const meme = getMeme()
     meme.lines.splice(gLine, 1)
-    meme.emoji.splice(gEmoji, 1)
     gLine--
     gLineMax--
-    gEmojiMax--
 }
 
 function addLine() {
@@ -127,11 +121,13 @@ function addLine() {
         isDrag: false,
         txt: '',
         size: 40,
-        align: 'center',
+        align: 'left',
         color: 'white',
-        x: 200,
-        y: getRandomInt(20, 300),
-        font: 'impact'
+        x: 20,
+        y: 35,
+        font: 'impact',
+        stroke: 'black',
+        emoji: [],
     },)
     gLine++
     gLineMax++
