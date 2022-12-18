@@ -19,8 +19,9 @@
         <header class="flex">
             <div class="logo"><img src="images/Slice_1.png" alt=""></div>
             <nav class="flex main-nav">
-                <a class="gallery a-clean" href="#" onclick="onMoveToGallery()">gallery</a>
-                <a class="about a-clean" href="#">about</a>
+                <a class="gallery a-clean" data-trans="Gallery" href="#" onclick="onMoveToGallery()">Gallery</a>
+                <a class="Saved a-clean" data-trans="Saved" href="#" onclick="onMoveToSavedArea()">Saved</a>
+                <a class="about a-clean" data-trans="About" href="#">about</a>
             </nav>
             <button class="menu-toggle" onclick="onToggleMenu()">☰</button>
         </header>
@@ -28,11 +29,20 @@
         <section class="meme-image-section">
 
             <div class="search-area flex">
+                <select class="transform-lang" onchange="onSetLang(this.value)">
+                    <option value="en">English</option>
+                    <option value="he">עברית</option>
+                </select>
+
                 <div class="flex search">
-                    <input class="search-bar" id="search" type="text"  placeHolder="Search" onkeyup="onFilterGallery()">
+                    <input class="search-bar" id="search" type="text" placeHolder="Search" onkeyup="onFilterGallery()">
                 </div>
                 <p class="keyWords flex"></p>
             </div>
+            <button class="random-btn" onclick="onRandomMeme()">Im Flexible</button>
+            <label for="upload" class="upload random-btn">Upload</label>
+            <input type="file" id="upload" class="" name="image" onchange="onUpLoadImage(event)"
+                style="display: none;" />
             <div class="meme-image-area">
 
             </div>
@@ -56,11 +66,17 @@
     </section>
 
     <section class="meme-area" style="display: none;">
+        <!-- header -->
         <header class="flex">
             <div class="logo"><img src="images/Slice_1.png" alt=""></div>
+            <select class="transform-lang" onchange="onSetLang(this.value)">
+                <option value="en">English</option>
+                <option value="he">עברית</option>
+            </select>
             <nav class="flex main-nav">
-                <a class="gallery a-clean" href="#" onclick="onMoveToGallery()">gallery</a>
-                <a class="about a-clean" href="#">about</a>
+                <a class="gallery a-clean" data-trans="Gallery" href="#" onclick="onMoveToGallery()">Gallery</a>
+                <a class="Saved a-clean" data-trans="Saved" href="#" onclick="onMoveToSavedArea()">Saved</a>
+                <a class="about a-clean" data-trans="About" href="#">about</a>
             </nav>
             <button class="menu-toggle" onclick="onToggleMenu()">☰</button>
         </header>
@@ -101,11 +117,11 @@
                     onclick="onAlignItems('right')"><img src="images/Rectangle_4_copie_5.png"></button>
                 <!-- font area -->
                 <select onchange="onChangeFonts()" name="fonts" class="pointer" id="fonts">
-                    <option value="impact">Impact</option>
-                    <option value="arial">Arial</option>
-                    <option value="poppins">poppins</option>
-                    <option value="fantasy">fantasy</option>
-                    <option value="poppins-extra-bold">poppins extra bold</option>
+                    <option data-trans="impact" value="impact">Impact</option>
+                    <option data-trans="Arial" value="arial">Arial</option>
+                    <option data-trans="poppins" value="poppins">poppins</option>
+                    <option data-trans="fantasy" value="fantasy">fantasy</option>
+                    <option data-trans="poppinsX" value="poppins-extra-bold">poppins extra bold</option>
                 </select>
 
                 <input type="color" title="stroke-color" class="style-edit-btn icon-border-out" id="stroke-color"
@@ -117,9 +133,10 @@
 
 
                 <a href="#" class="download flex" onclick="downloadImg(this)" download="my-img.jpg"><img
-                        src="images/Forme_8.png"> Download</a>
+                        src="images/Forme_8.png" data-trans="download">Download</a>
 
-                <a href="#" onclick="onUploadImg()" class="Share a-clean flex"><img src="images/Forme_7.png"> Share</a>
+                <a href="#" onclick="onUploadImg()" class="Share a-clean flex"><img src="images/Forme_7.png"
+                        data-trans="Share"> Share</a>
 
                 <div class="em-area">
                     <img class="em em1" onclick="onClickEm(this)" src="images/Emoji_on.png">
@@ -132,14 +149,45 @@
                     <img class="em em4" onclick="onClickEm(this)" src="images/Layer_7.png">
                     <img class="em em4" onclick="onClickEm(this)" src="images/billed-cap_1f9e2.png">
                 </div>
+                <button class="style-edit-btn saveBtn" onclick="onSaveMeme()">save</button>
             </div>
-
         </div>
     </section>
 
+
+    <section class="saved-area">
+        <header class="flex">
+            <div class="logo"><img src="images/Slice_1.png" alt=""></div>
+            <select class="transform-lang" onchange="onSetLang(this.value)">
+                <option value="en">English</option>
+                <option value="he">עברית</option>
+            </select>
+            <nav class="flex main-nav">
+                <a class="gallery a-clean" data-trans="Gallery" href="#" onclick="onMoveToGallery()">Gallery</a>
+                <a class="Saved a-clean" data-trans="Saved" href="#" onclick="onMoveToSavedArea()">Saved</a>
+                <a class="about a-clean" data-trans="About" href="#">about</a>
+            </nav>
+            <button class="menu-toggle" onclick="onToggleMenu()">☰</button>
+        </header>
+
+        <section class="saved-memes flex">
+
+
+        </section>
+
+    </section>
+
+
+    <div class="pop-up-msg"></div>
+
+
+
     <script src="js/meme.services.js"></script>
+    <script src="js/stoarge.services.js"></script>
     <script src="js/gallery.services.js"></script>
     <script src="js/upload-and-download.services.js"></script>
+    <script src="js/leng.services.js"></script>
+    <script src="js/flashMsg.services.js"></script>
     <script src="js/meme-controler.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/main.js"></script>

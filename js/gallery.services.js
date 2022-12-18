@@ -31,6 +31,21 @@ let gImgs = [
     { id: 25, url: 'images/news.jpg', keywords: ['people', 'cat'] },
 ]
 
+
+
+
+function renderSavedGallery() {
+    let savedMemes = loadFromStorage(STORAGE_KEY)
+    if (!savedMemes || !savedMemes.length) return
+    let strHtmls = savedMemes.map(meme => {
+        console.log(meme)
+        return `<div><img class="saved-image ${meme.image.id}" onclick="onImageClicked(${meme.image.id},this)" src="${meme.image.url}"></div>`
+    })
+
+    document.querySelector('.saved-memes').innerHTML = strHtmls.join('')
+
+}
+
 function renderKeyWords() {
     const keys = getKeys()
     let strHtmls = keys.map(key => {
@@ -48,7 +63,7 @@ function getImages() {
 }
 
 function renderGalleryImage() {
-    
+
     let images = filterGallary()
     if (!images.length) {
         images = getImages()
@@ -57,15 +72,13 @@ function renderGalleryImage() {
     let strHtmls = images.map(image => {
         return `<div><img class="image ${image.id}" onclick="onImageClicked(${image.id},this)" src="${image.url}"></div>`
     })
-    
+
     document.querySelector('.meme-image-area').innerHTML = strHtmls.join('')
     renderKeyWords()
 }
 
 function onFilterGallery() {
     renderGalleryImage()
-    
-
 }
 
 function filterGallary() {
@@ -84,7 +97,7 @@ function renderGalleryByClick(key) {
     let filterImages = filterByClick(key)
 
     let strHtmls = filterImages.map(image => {
-        return `<div><img class="image ${image.id}" onclick="onImageClicked(${image.id},this)" src="./images/${image.id}.jpg"></div>`
+        return `<div><img class="image ${image.id}" onclick="onImageClicked(${image.id},this)" src="${image.url}"></div>`
     })
 
     document.querySelector('.meme-image-area').innerHTML = strHtmls.join('')
@@ -92,7 +105,7 @@ function renderGalleryByClick(key) {
 
 function filterByClick(key) {
     const keyText = key.innerText.toLowerCase()
-    console.log(keyText)
+    // console.log(keyText)
     const images = getImages()
     filterImg = images.filter(image => image.keywords.includes(keyText))
     tapping.play()

@@ -17,6 +17,40 @@ function onImageClicked(imageId) {
 function onRotate() {
 }
 
+function onClickEm(image) {
+    const meme = getMeme()
+    meme.emoji.push({
+        url: image.src,
+        x: 20,
+        y: 35,
+        isDrag: false,
+        sizeX: 45,
+        sizeY: 45,
+    },)
+
+    gEmojiMax++
+    gEmoji++
+    renderEm()
+}
+
+function onRandomMeme() {
+    tapping.play()
+    const randomId = getRandomInt(1, 20)
+    onImageClicked(randomId)
+    const meme = getMeme()
+    meme.lines[0].txt = makeLorem(4)
+    renderMeme()
+}
+
+function onSaveMeme() {
+    const imgDataUrl = gElCanvas.toDataURL('image/jpeg')
+    const meme = getMeme()
+    meme.image.url = imgDataUrl
+    gSavedMeme.push(meme)
+    saveToStorage(STORAGE_KEY, gSavedMeme)
+    renderSavedGallery()
+}
+
 function onChangeFonts() {
     changeFonts()
     renderMeme()
@@ -30,14 +64,18 @@ function onAlignItems(txt) {
 }
 
 function onRemoveLine() {
+    restInputText()
     removeLine()
     renderMeme()
+    infoMsg(`line remove`)
     tapping.play()
 }
 
 function onAddLine() {
+    restInputText()
     addLine()
     renderMeme()
+    infoMsg('Line add !')
     tapping.play()
 }
 
@@ -46,6 +84,8 @@ function onSwitchLine() {
     gEmoji === gEmojiMax ? gEmoji = 0 : gEmoji++
     // console.log(gEmojiMax, gEmoji)
     tapping.play()
+    restInputText()
+    infoMsg(`line now ${gLine + 1}`)
 }
 
 function onSetLineTxt() {
@@ -55,7 +95,6 @@ function onSetLineTxt() {
     renderMeme()
     tapping.play()
 }
-
 
 function onStrokeSet() {
     const inputValue = document.getElementById('stroke-color').value
@@ -72,7 +111,6 @@ function onColorSet() {
     renderMeme()
     tapping.play()
 }
-
 
 function onChangeFont(elBtn) {
     const meme = getMeme()

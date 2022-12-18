@@ -7,6 +7,8 @@
 @import './cmps/editor.css';
 @import './cmps/footer.css';
 @import './cmps/dropDown.css';
+@import './cmps/pop-up-msg.css';
+@import './cmps/transform-lang.css';
 
 * {
     box-sizing: border-box;
@@ -17,5 +19,8 @@ body {
     text-align: center;
     background-color: #22252c;
     text-transform: capitalize;
+}
+.saved-area {
+    display: none;
 }
 

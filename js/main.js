@@ -11,7 +11,9 @@ function onInit() {
     gCtx = gElCanvas.getContext('2d')
     addListeners()
     renderGalleryImage()
+    renderSavedGallery()
 }
+// event listeners
 
 function addListeners() {
     addMouseListeners()
@@ -22,7 +24,6 @@ function addListeners() {
 
     // })
 }
-
 
 function addMouseListeners() {
     gElCanvas.addEventListener('mousemove', onMove)
@@ -36,13 +37,13 @@ function addTouchListeners() {
     gElCanvas.addEventListener('touchend', onUp)
 }
 
-
 function onMoveToGallery() {
     document.querySelector('.main-section').style.display = "block"
     document.querySelector('.meme-area').style.display = "none"
+    document.querySelector('.saved-area').style.display = 'none'
     tapping.play()
+    // document.body.classList.toggle('menu-open')
     restGMeme()
-
 }
 
 function onDown(ev) {
@@ -125,6 +126,32 @@ function getEvPos(ev) {
     return pos
 }
 
+function onUpLoadImage(ev) {
+    document.querySelector('.main-section').style.display = "none"
+    document.querySelector('.meme-area').style.display = "block"
+    loadImageFromInput(ev, renderMemeFromUpload)
+}
+
+function loadImageFromInput(ev, onImageReady) {
+    const reader = new FileReader()
+    reader.onload = (event) => {
+        let img = new Image() 
+        img.src = event.target.result 
+        img.onload = () => onImageReady(img)
+    }
+    reader.readAsDataURL(ev.target.files[0]) 
+}
+
+function renderMemeFromUpload(img) {
+    const meme = getMeme()
+    console.log(img)
+    gMeme.image = { id: 1, url: img.currentSrc, keywords: ['politician', 'president'] }
+    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+    meme.lines.map(line => {
+        var { txt, color, size, align, x, y, font, stroke } = line
+        drawText(txt, x, y, color, size, align, font, stroke)
+    })
+}
 // not in use 
 function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container')
@@ -132,8 +159,13 @@ function resizeCanvas() {
     gElCanvas.height = elContainer.offsetHeight
 }
 
-
 function onToggleMenu() {
     tapping.play()
     document.body.classList.toggle('menu-open')
+}
+
+function onMoveToSavedArea() {
+    document.querySelector('.main-section').style.display = 'none'
+    document.querySelector('.meme-area').style.display = 'none'
+    document.querySelector('.saved-area').style.display = 'block'
 }

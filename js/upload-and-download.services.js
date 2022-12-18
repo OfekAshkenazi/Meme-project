@@ -1,6 +1,7 @@
 'use strict'
 
 function downloadImg(elLink) {
+    infoMsg('Download Meme')
     const imgContent = gElCanvas.toDataURL('image/jpeg') // image/jpeg the default format
     elLink.href = imgContent
 }
@@ -19,6 +20,7 @@ function onUploadImg() {
 }
 
 function doUploadImg(imgDataUrl, onSuccess) {
+    infoMsg('Upload to facebook')
     // Pack the image for delivery
     const formData = new FormData()
     formData.append('img', imgDataUrl)

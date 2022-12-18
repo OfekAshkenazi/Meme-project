@@ -1,4 +1,5 @@
 'use strict'
+var gSavedMeme = []
 
 var gMeme = {
 
@@ -20,6 +21,12 @@ var gMeme = {
     ]
 
 }
+
+
+function getSavedMemes() {
+    return gSavedMeme
+}
+
 function restGMeme() {
     return gMeme = {
 
@@ -37,9 +44,9 @@ function restGMeme() {
             },
         ],
         emoji: [
-    
+
         ]
-    
+
     }
 }
 
@@ -55,24 +62,6 @@ function renderMeme() {
     renderEm()
 
 }
-
-
-function onClickEm(image) {
-    const meme = getMeme()
-    meme.emoji.push({
-        url: image.src,
-        x: 20,
-        y: 35,
-        isDrag: false,
-        sizeX: 45,
-        sizeY: 45,
-    },)
-
-    gEmojiMax++
-    gEmoji++
-    renderEm()
-}
-
 
 function renderEm() {
     const meme = getMeme()
@@ -98,7 +87,6 @@ function drawText(text, x, y, color, size, align, font, stroke) {
     gCtx.fillText(text, x, y) // Draws (fills) a given text at the given (x, y) position.
     gCtx.strokeText(text, x, y) // Draws (strokes) a given text at the given (x, y) position.
 }
-
 
 function changeFonts() {
     const fontFam = document.getElementById('fonts').value
@@ -127,6 +115,7 @@ function removeLine() {
     const meme = getMeme()
     meme.lines.splice(gLine, 1)
     meme.emoji.splice(gEmoji, 1)
+    gLine--
     gLineMax--
     gEmojiMax--
 }
@@ -143,5 +132,10 @@ function addLine() {
         y: getRandomInt(20, 300),
         font: 'impact'
     },)
+    gLine++
     gLineMax++
+}
+
+function restInputText() {
+    document.getElementById('meme-text').value = ''
 }

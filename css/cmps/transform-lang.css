@@ -1,0 +1,13 @@
+body.rtl {
+    direction: rtl;
+}
+.transform-lang {
+    background-color: rgba(56, 59, 66, 0.726);
+    border: none;
+    color: aliceblue;
+    border-radius: 15px;
+    max-height: 40px;
+    padding: 0.5em;
+    align-self: center;
+}
+
