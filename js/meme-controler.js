@@ -12,6 +12,9 @@ function onImageClicked(imageId) {
     tapping.play()
 }
 
+
+
+
 function onRotate() {
 }
 
