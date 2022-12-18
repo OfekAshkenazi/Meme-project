@@ -3,7 +3,7 @@
 let gCtx
 let gElCanvas
 let gStartPos
-const tapping = new Audio('sounds/tap.wav')
+// const tapping = new Audio('sounds/tap.wav')
 const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 
 function onInit() {
@@ -18,11 +18,6 @@ function onInit() {
 function addListeners() {
     addMouseListeners()
     addTouchListeners()
-    // window.addEventListener('resize', () => {
-    //     resizeCanvas()
-    //     renderMeme(gMeme.image.url)
-
-    // })
 }
 
 function addMouseListeners() {
@@ -41,8 +36,6 @@ function onMoveToGallery() {
     document.querySelector('.main-section').style.display = "block"
     document.querySelector('.meme-area').style.display = "none"
     document.querySelector('.saved-area').style.display = 'none'
-    tapping.play()
-    // document.body.classList.toggle('menu-open')
     restGMeme()
 }
 
@@ -52,7 +45,6 @@ function onDown(ev) {
     meme.lines[gLine].isDrag = true
     document.body.style.cursor = 'grabbing'
     gStartPos = pos
-    tapping.play()
 }
 
 function onMove(ev) {
@@ -64,7 +56,6 @@ function onMove(ev) {
     moveText(dx, dy)
     gStartPos = pos
     renderMeme()
-
 }
 
 function moveText(dx, dy) {
@@ -75,16 +66,11 @@ function moveText(dx, dy) {
         meme.lines[gLine].emoji.x += dx
         meme.lines[gLine].emoji.y += dy
     }
-
-
 }
 
 function onUp() {
     const meme = getMeme()
     meme.lines[gLine].isDrag = false
-    // if (gEmoji > 0) {
-    //     meme.emoji[gEmoji].isDrag = false
-    // }
     document.body.style.cursor = 'default'
 }
 
@@ -108,33 +94,6 @@ function onUpLoadImage(ev) {
     document.querySelector('.main-section').style.display = "none"
     document.querySelector('.meme-area').style.display = "block"
     loadImageFromInput(ev, renderMemeFromUpload)
-}
-
-function loadImageFromInput(ev, onImageReady) {
-    const reader = new FileReader()
-    reader.onload = (event) => {
-        let img = new Image() 
-        img.src = event.target.result 
-        img.onload = () => onImageReady(img)
-    }
-    reader.readAsDataURL(ev.target.files[0]) 
-}
-
-function renderMemeFromUpload(img) {
-    const meme = getMeme()
-    console.log(img)
-    gMeme.image = { id: 1, url: img.currentSrc, keywords: ['politician', 'president'] }
-    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-    meme.lines.map(line => {
-        var { txt, color, size, align, x, y, font, stroke } = line
-        drawText(txt, x, y, color, size, align, font, stroke)
-    })
-}
-// not in use 
-function resizeCanvas() {
-    const elContainer = document.querySelector('.canvas-container')
-    gElCanvas.width = elContainer.offsetWidth
-    gElCanvas.height = elContainer.offsetHeight
 }
 
 function onToggleMenu() {

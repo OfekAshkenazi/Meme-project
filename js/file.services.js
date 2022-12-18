@@ -33,3 +33,24 @@ function doUploadImg(imgDataUrl, onSuccess) {
             onSuccess(url)
         })
 }
+
+function loadImageFromInput(ev, onImageReady) {
+    const reader = new FileReader()
+    reader.onload = (event) => {
+        let img = new Image() 
+        img.src = event.target.result 
+        img.onload = () => onImageReady(img)
+    }
+    reader.readAsDataURL(ev.target.files[0]) 
+}
+
+function renderMemeFromUpload(img) {
+    const meme = getMeme()
+    console.log(img)
+    gMeme.image = { id: 1, url: img.currentSrc, keywords: ['politician', 'president'] }
+    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+    meme.lines.map(line => {
+        var { txt, color, size, align, x, y, font, stroke } = line
+        drawText(txt, x, y, color, size, align, font, stroke)
+    })
+}

@@ -38,9 +38,7 @@ function renderSavedGallery() {
         console.log(meme)
         return `<div><img class="saved-image ${meme.image.id}" onclick="onImageClicked(${meme.image.id},this)" src="${meme.savedUrl}"></div>`
     })
-
     document.querySelector('.saved-memes').innerHTML = strHtmls.join('')
-
 }
 
 function renderKeyWords() {
@@ -60,7 +58,6 @@ function getImages() {
 }
 
 function renderGalleryImage() {
-
     let images = filterGallary()
     if (!images.length) {
         images = getImages()
@@ -69,7 +66,6 @@ function renderGalleryImage() {
     let strHtmls = images.map(image => {
         return `<div><img class="image ${image.id}" onclick="onImageClicked(${image.id},this)" src="${image.url}"></div>`
     })
-
     document.querySelector('.meme-image-area').innerHTML = strHtmls.join('')
     renderKeyWords()
 }
@@ -92,19 +88,15 @@ function onFilterByClick(key) {
 function renderGalleryByClick(key) {
     renderKeyWords()
     let filterImages = filterByClick(key)
-
     let strHtmls = filterImages.map(image => {
         return `<div><img class="image ${image.id}" onclick="onImageClicked(${image.id},this)" src="${image.url}"></div>`
     })
-
     document.querySelector('.meme-image-area').innerHTML = strHtmls.join('')
 }
 
 function filterByClick(key) {
     const keyText = key.innerText.toLowerCase()
-    // console.log(keyText)
     const images = getImages()
     filterImg = images.filter(image => image.keywords.includes(keyText))
-    tapping.play()
     return filterImg
 }

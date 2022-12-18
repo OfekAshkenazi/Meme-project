@@ -9,7 +9,6 @@ function onImageClicked(imageId) {
     document.querySelector('.saved-area').style.display = "none"
     document.querySelector('.meme-area').style.display = "block"
     renderMeme()
-    tapping.play()
 }
 
 
@@ -32,7 +31,6 @@ function onClickEm(image) {
 }
 
 function onRandomMeme() {
-    tapping.play()
     const randomId = getRandomInt(1, 20)
     onImageClicked(randomId)
     const meme = getMeme()
@@ -53,13 +51,11 @@ function onSaveMeme() {
 function onChangeFonts() {
     changeFonts()
     renderMeme()
-    tapping.play()
 }
 
 function onAlignItems(txt) {
     alignItmes(txt)
     renderMeme()
-    tapping.play()
 }
 
 function onRemoveLine() {
@@ -67,7 +63,6 @@ function onRemoveLine() {
     removeLine()
     renderMeme()
     infoMsg(`line remove`)
-    tapping.play()
 }
 
 function onAddLine() {
@@ -75,12 +70,10 @@ function onAddLine() {
     addLine()
     renderMeme()
     infoMsg('Line add !')
-    tapping.play()
 }
 
 function onSwitchLine() {
     gLine === gLineMax ? gLine = 0 : gLine++
-    tapping.play()
     restInputText()
     infoMsg(`line now ${gLine + 1}`)
 }
@@ -90,7 +83,6 @@ function onSetLineTxt() {
     const meme = getMeme()
     meme.lines[gLine].txt = inputValue
     renderMeme()
-    tapping.play()
 }
 
 function onStrokeSet() {
@@ -98,7 +90,6 @@ function onStrokeSet() {
     const meme = getMeme()
     meme.lines[gLine].stroke = inputValue
     renderMeme()
-    tapping.play()
 }
 
 function onColorSet() {
@@ -106,7 +97,6 @@ function onColorSet() {
     const meme = getMeme()
     meme.lines[gLine].color = inputValue
     renderMeme()
-    tapping.play()
 }
 
 function onChangeFont(elBtn) {
@@ -117,6 +107,5 @@ function onChangeFont(elBtn) {
         meme.lines[gLine].size--
     }
     renderMeme()
-    tapping.play()
 }
 
