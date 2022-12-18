@@ -18,7 +18,8 @@ var gMeme = {
     ],
     emoji: [
 
-    ]
+    ],
+    savedUrl: '',
 
 }
 

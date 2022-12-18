@@ -39,7 +39,7 @@ function renderSavedGallery() {
     if (!savedMemes || !savedMemes.length) return
     let strHtmls = savedMemes.map(meme => {
         console.log(meme)
-        return `<div><img class="saved-image ${meme.image.id}" onclick="onImageClicked(${meme.image.id},this)" src="${meme.image.url}"></div>`
+        return `<div><img class="saved-image ${meme.image.id}" onclick="onImageClicked(${meme.image.id},this)" src="${meme.savedUrl}"></div>`
     })
 
     document.querySelector('.saved-memes').innerHTML = strHtmls.join('')

@@ -45,7 +45,7 @@ function onRandomMeme() {
 function onSaveMeme() {
     const imgDataUrl = gElCanvas.toDataURL('image/jpeg')
     const meme = getMeme()
-    meme.image.url = imgDataUrl
+    meme.savedUrl = imgDataUrl
     gSavedMeme.push(meme)
     saveToStorage(STORAGE_KEY, gSavedMeme)
     renderSavedGallery()
