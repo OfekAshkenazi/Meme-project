@@ -47,6 +47,7 @@ function onSaveMeme() {
     gSavedMeme.push(meme)
     saveToStorage(STORAGE_KEY, gSavedMeme)
     renderSavedGallery()
+    infoMsg('meme saved')
 }
 
 function onChangeFonts() {
